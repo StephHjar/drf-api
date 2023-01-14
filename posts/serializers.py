@@ -3,10 +3,10 @@ from .models import Post
 
 
 class PostSerializer(serializers.ModelSerializer):
-    owner = serializer.ReadOnlyField(source='owner.username')
-    is_owner = serializer.SerializerMethodField()
-    profile_id = serializer.ReadOnlyField(source='owner.profile.id')
-    profile_image = serializer.ReadOnlyField(source='owner.profile.image.url')
+    owner = serializers.ReadOnlyField(source='owner.username')
+    is_owner = serializers.SerializerMethodField()
+    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
+    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
